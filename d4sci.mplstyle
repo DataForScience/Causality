@@ -1,0 +1,44 @@
+# Data For Science style
+# Author: Bruno Goncalves <bgoncalves@data4sci.com>
+# Modified from the matplotlib FiveThirtyEight style by
+# Author: Cameron Davidson-Pilon, replicated styles from FiveThirtyEight.com
+# See https://www.dataorigami.net/blogs/fivethirtyeight-mpl
+
+lines.linewidth: 4
+lines.solid_capstyle: butt
+
+legend.fancybox: true
+
+axes.prop_cycle: cycler('color', ['51a7f9', 'cf51f9', '70bf41', 'f39019', 'f9e351', 'f9517b', '6d904f', '8b8b8b','810f7c']) 
+
+axes.labelsize: large
+axes.axisbelow: true
+axes.grid: true
+axes.edgecolor: f0f0f0
+axes.linewidth: 3.0
+axes.titlesize: x-large
+
+patch.edgecolor: f0f0f0
+patch.linewidth: 0.5
+
+svg.fonttype: path
+
+grid.linestyle: -
+grid.linewidth: 1.0
+
+xtick.major.size: 0
+xtick.minor.size: 0
+ytick.major.size: 0
+ytick.minor.size: 0
+
+font.size: 24.0
+
+savefig.edgecolor: f0f0f0
+savefig.facecolor: f0f0f0
+
+figure.subplot.left: 0.08
+figure.subplot.right: 0.95
+figure.subplot.bottom: 0.07
+figure.figsize: 12.8, 8.8
+figure.autolayout: True
+figure.dpi: 300
