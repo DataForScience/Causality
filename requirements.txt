@@ -1,0 +1,5 @@
+matplotlib==3.1.3
+numpy==1.18.1
+pandas==1.0.1
+scikit_learn==0.23.1
+watermark==2.0.2
