@@ -19,3 +19,9 @@ The book is divided into Four chapters. The first chapter covers background mate
 3. — Counterfactuals
 
 In this series of blog posts we will cover most of the content of the book, with a special emphasis on the parts that I believe are more interesting or relevant to practical applications. In addition to summarizing and explaining the content, we will also explore some of the ideas using simple (or as simple as possible) Python code you can run on Binder: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/DataForScience/Causality/master)
+
+1.2 - [Simpson's Parandox](https://medium.com/data-for-science/causal-inference-part-i-415538211aa1) -- [1.2 - Simpson's Paradox.ipynb](https://github.com/DataForScience/Causality/blob/master/1.2%20-%20Simpson's%20Paradox.ipynb)
+
+1.3 - [Probability Theory](https://medium.com/data-for-science/causal-inference-part-ii-probability-theory-8fc804fa8240) -- [1.3 - Probability and Statistics.ipynb](https://github.com/DataForScience/Causality/blob/master/1.3%20-%20Probability%20and%20Statistics.ipynb)
+
+1.4 - [Graphs](https://medium.com/data-for-science/causal-inference-part-iii-graphs-df043300add1) -- 
