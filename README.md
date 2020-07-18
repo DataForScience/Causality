@@ -24,4 +24,4 @@ In this series of blog posts we will cover most of the content of the book, with
 
 1.3 - [Probability Theory](https://medium.com/data-for-science/causal-inference-part-ii-probability-theory-8fc804fa8240) -- [1.3 - Probability and Statistics.ipynb](https://github.com/DataForScience/Causality/blob/master/1.3%20-%20Probability%20and%20Statistics.ipynb)
 
-1.4 - [Graphs](https://medium.com/data-for-science/causal-inference-part-iii-graphs-df043300add1) -- 
+1.4 - [Graphs](https://medium.com/data-for-science/causal-inference-part-iii-graphs-df043300add1) -- [1.4 - Graphs.ipynb](https://github.com/DataForScience/Causality/blob/master/1.4%20%20-%20Graphs.ipynb)
