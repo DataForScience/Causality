@@ -27,7 +27,7 @@ In this series of blog posts we will cover most of the content of the book, with
 
 1.4 - [Graphs](https://medium.com/data-for-science/causal-inference-part-iii-graphs-df043300add1) -- [1.4 - Graphs.ipynb](https://github.com/DataForScience/Causality/blob/master/1.4%20-%20Graphs.ipynb)
 
-1.5 - [Structural Causal Models](https://medium.com/data-for-science/causal-inference-part-iv-structural-causal-models-df10a83be580) -- [1.5 - Structural Causal Models.ipynb](https://github.com/DataForScience/Causality/blob/master/1.5%20-%20Structural Causal Models.ipynb)
+1.5 - [Structural Causal Models](https://medium.com/data-for-science/causal-inference-part-iv-structural-causal-models-df10a83be580) -- [1.5 - Structural Causal Models.ipynb](https://github.com/DataForScience/Causality/blob/master/1.5%20-%20Structural%20Causal%20Models.ipynb)
 
 ## Chapter 2
 Coming Soon!
