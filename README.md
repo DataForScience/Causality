@@ -32,7 +32,8 @@ In this series of blog posts we will cover most of the content of the book, with
 1.5 - [Structural Causal Models](https://medium.com/data-for-science/causal-inference-part-iv-structural-causal-models-df10a83be580) -- [1.5 - Structural Causal Models.ipynb](https://github.com/DataForScience/Causality/blob/master/1.5%20-%20Structural%20Causal%20Models.ipynb)
 
 ## Chapter 2
-Coming Soon!
+2.2 - [Chains and Forks](https://medium.com/data-for-science/causal-inference-part-v-chains-and-forks-7b0b088c346e) -- [2.2 - Chains and Forks.ipynb](https://github.com/DataForScience/Causality/blob/master/2.2%20-%20Chains%20and%20Forks.ipynb)
+
 
 For a more in-depth analysis, checkout Pearl's more technical book:
 
