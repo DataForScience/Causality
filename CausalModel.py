@@ -378,6 +378,37 @@ class CausalModel(object):
         return {tuple(path) for path in nx.all_simple_paths(self.dag.to_undirected(), source, target)}
 
 
+    def all_paths_conditional(self, source, target, remove):
+        """Initialize the CausalModel object by reading the information from the dot file with the passed path.
+
+        The file should be a `dot` file and if it contains multiple graphs, only the first such graph is returned. All graphs _except_ the first are silently ignored.
+
+        Parameters
+        ----------
+        path : str or file
+            Filename or file handle.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        >>> G = CausalModel()
+        >>> G.load_model('temp.dot')
+
+        Notes
+        -----
+        The heavy lifting is done by `networkx.drawing.nx_pydot.read_dot`
+
+        """
+
+        dag = self.dag.to_undirected()
+        dag.remove_nodes_from(remove)
+
+        return {tuple(path) for path in nx.all_simple_paths(dag, source, target)}
+
+
 
 
     def plot_path(self, path, ax=None):

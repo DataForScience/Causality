@@ -36,6 +36,8 @@ In this series of blog posts we will cover most of the content of the book, with
 
 2.3 - [Colliders](https://medium.com/data-for-science/causal-inference-part-vi-colliders-af07301c9a15) -- [2.3 - Colliders.ipynb](https://github.com/DataForScience/Causality/blob/master/2.3%20-%20Colliders.ipynb)
 
+2.4 - [d-separation](https://medium.com/data-for-science/causal-inference-part-vii-d-separation-aa74e361d34e) -- [2.4 - d-separation.ipynb](https://github.com/DataForScience/Causality/blob/master/2.4%20-%20d-separation.ipynb)
+
 
 For a more in-depth analysis, checkout Pearl's more technical book:
 
