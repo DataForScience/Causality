@@ -5,6 +5,7 @@
 
 import networkx as nx
 from networkx.drawing.nx_pydot import graphviz_layout
+from itertools import combinations
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
@@ -19,7 +20,6 @@ warnings.filterwarnings("ignore")
 from tqdm import tqdm
 tqdm.pandas()
 
-
 plt.style.use('./d4sci.mplstyle')
 
 class CausalModel(object):
@@ -29,7 +29,6 @@ class CausalModel(object):
     """
 
     def __init__(self, filename=None):
-        #self.daggity_coords = re.compile(r'@[0-9.]+,[0-9.]+\s*')
         self.pos = None
 
         if filename is not None:
@@ -39,28 +38,14 @@ class CausalModel(object):
 
         self.colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
 
+    def copy(self):
+        G = CausalModel()
+        G.dag = self.dag.copy()
+        G.pos = dict(self.pos)
+        G.colors = [color for color in self.colors]
 
-    # def _load_dagitty(self, graph_id):
-    #     if graph_id[0] == 'm':
-    #         graph_id = graph_id[1:]
+        return G
 
-    #     data = requests.get('http://dagitty.net/dags/load.php?id=%s' % graph_id)
-    #     dag = base64.b64decode(data.text).decode('utf8')
-
-    #     nodes, edges = dag.strip().split('\n\n')
-
-    #     edges = edges.strip().split('\n')
-    #     edges = [re.sub(self.daggity_coords, '', edge).strip() for edge in edges]
-
-    #     self.dag = nx.parse_adjlist(edges, create_using=nx.DiGraph)
-    #     self.pos = {}
-
-    #     for node in nodes.split('\n'):
-    #         node, node_type, layout = node.split()
-    #         x, y = layout[1:].split(',')
-
-    #         self.dag.add_node(node, type=node_type)
-    #         self.pos[node] = (float(x), -float(y))
 
     def add_causation(self, source, target, label=None):
         """Add a causal link between source and target with an optional label.
@@ -141,10 +126,8 @@ class CausalModel(object):
         self.pos = pos
 
 
-    def save_model(self, filename):
-        """Initialize the CausalModel object by reading the information from the dot file with the passed path.
-
-        The file should be a `dot` file and if it contains multiple graphs, only the first such graph is returned. All graphs _except_ the first are silently ignored.
+    def save_model(self, path):
+        """Save the causal model as a `dot` file.
 
         Parameters
         ----------
@@ -158,11 +141,14 @@ class CausalModel(object):
         Examples
         --------
         >>> G = CausalModel()
-        >>> G.load_model('temp.dot')
+        >>> G.add_causation('X', 'Y')
+        >>> G.add_causation('Y', 'Z')
+        >>> G.pos = {'X':(-1, 0), 'Y': (0, 0), 'Z': (1, 0)}
+        >>> G.save_model('temp.dot')
 
         Notes
         -----
-        The heavy lifting is done by `networkx.drawing.nx_pydot.read_dot`
+        The heavy lifting is done by `networkx.drawing.nx_pydot.write_dot`
 
         """
         G = self.dag.copy()
@@ -174,7 +160,7 @@ class CausalModel(object):
                 G.nodes[node]['x'] = str(self.pos[node][0])
                 G.nodes[node]['y'] = str(self.pos[node][1])
 
-        nx.drawing.nx_pydot.write_dot(G, filename)
+        nx.drawing.nx_pydot.write_dot(G, path)
 
     def layout(self):
         """Initialize the CausalModel object by reading the information from the dot file with the passed path.
@@ -273,10 +259,36 @@ class CausalModel(object):
         """
         return list(nx.ancestors(self.dag, node))
 
-    def children(self, node):
-        """Initialize the CausalModel object by reading the information from the dot file with the passed path.
+    def children(self, source):
+        """Obtain the children of a node.
 
-        The file should be a `dot` file and if it contains multiple graphs, only the first such graph is returned. All graphs _except_ the first are silently ignored.
+        Children are the nodes at the other end of outgoing edges.
+
+        Parameters
+        ----------
+        source : node in `G`
+            The parent node
+
+        Returns
+        -------
+        list()
+            List of the children of `source` in `G`
+
+        Examples
+        --------
+        >>> G.children('X')
+
+        Notes
+        -----
+        The heavy lifting is done by `networkx.successors`
+
+        """
+        return list(self.dag.successors(source))
+
+    def descendants(self, source):
+        """Obtain the descendants of a node.
+
+        Descendants are all the nodes reacheable through outgoing edges.
 
         Parameters
         ----------
@@ -285,7 +297,8 @@ class CausalModel(object):
 
         Returns
         -------
-        None
+        list()
+            List of the descendants of `source` in `G`
 
         Examples
         --------
@@ -294,36 +307,10 @@ class CausalModel(object):
 
         Notes
         -----
-        The heavy lifting is done by `networkx.drawing.nx_pydot.read_dot`
+        The heavy lifting is done by `networkx.descendants`
 
         """
-        return list(self.dag.successors(node))
-
-    def descendents(self, node):
-        """Initialize the CausalModel object by reading the information from the dot file with the passed path.
-
-        The file should be a `dot` file and if it contains multiple graphs, only the first such graph is returned. All graphs _except_ the first are silently ignored.
-
-        Parameters
-        ----------
-        path : str or file
-            Filename or file handle.
-
-        Returns
-        -------
-        None
-
-        Examples
-        --------
-        >>> G = CausalModel()
-        >>> G.load_model('temp.dot')
-
-        Notes
-        -----
-        The heavy lifting is done by `networkx.drawing.nx_pydot.read_dot`
-
-        """
-        return list(nx.descendants(self.dag, node))
+        return list(nx.descendants(self.dag, source))
 
     def directed_paths(self, source, target):
         """Initialize the CausalModel object by reading the information from the dot file with the passed path.
@@ -409,9 +396,7 @@ class CausalModel(object):
         return {tuple(path) for path in nx.all_simple_paths(dag, source, target)}
 
 
-
-
-    def plot_path(self, path, ax=None):
+    def plot_path(self, path, edges=False, ax=None, lw=3):
         """Initialize the CausalModel object by reading the information from the dot
          file with the passed path.
 
@@ -443,17 +428,22 @@ class CausalModel(object):
         if ax == None:
             fig, ax = plt.subplots(1)
         
-        edgelist = {(path[i], path[i+1]) for i in range(len(path)-1)}
+        if edges:
+            edgelist = path
+        else:
+            edgelist = {(path[i], path[i+1]) for i in range(len(path)-1)}
+
         edges = set(self.dag.edges()) - set(edgelist)
         
         nx.draw(self.dag, self.pos, node_color=self.colors[0], ax=ax, edgelist=[])
         nx.draw_networkx_labels(self.dag, self.pos, ax=ax)
         nx.draw_networkx_edges(self.dag, self.pos,
                            edgelist=edgelist,
-                           width=3, edge_color=self.colors[1], ax=ax)
+                           width=lw, edge_color=self.colors[1], ax=ax)
         nx.draw_networkx_edges(self.dag, self.pos,
                            edgelist=edges,
                            width=1, ax=ax)
+
         if fig is not None:
             fig.tight_layout()
 
@@ -533,14 +523,89 @@ class CausalModel(object):
 
         plt.close()
 
+    def v_structures(self):
+        structs = set()
+
+        degrees = dict(self.dag.in_degree())
+
+        for node in degrees:
+            if degrees[node] >= 2:
+                for edge_i, edge_j in combinations(self.dag.in_edges(node), 2):
+                    node_i = edge_i[0]
+                    node_j = edge_j[0]
+                    
+                    if not (node_i, node_j) in self.dag.edges and not (node_j, node_i) in self.dag.edges:
+                        structs.add(tuple(sorted([edge_i, edge_j])))
+
+        return structs
+
+    def equivalence_class(self):
+        edges = list(self.dag.edges(data=True))
+
+        equivalent = [[self.copy(), []]]
+
+        structs = self.v_structures()
+
+        for i, edge in enumerate(edges):
+            new_edges = list(edges)
+
+            new_edges[i] = (edge[1], edge[0], edge[2])
+
+            G = CausalModel()
+            G.dag.add_edges_from(new_edges)
+
+            new_structs = CausalModel.v_structures(G)
+
+            if new_structs == structs and len(list(nx.simple_cycles(G.dag)))==0:
+                G.pos = dict(self.pos)
+                G.colors = [color for color in self.colors]
+                equivalent.append([G, new_edges[i][:2]])
+
+        return equivalent
+
+
+    def basis_set(self):
+        nodes = set(self.dag.nodes())
+
+        eqn = []
+
+        for node in nodes:
+            parents = set(self.parents(node))
+            descendants = set(self.descendants(node))
+            
+            others = {n for n in nodes if n != node}
+            others -= parents
+            others -= descendants
+            
+            others = sorted(others)
+            parents = sorted(parents)
+
+            if len(others) > 0:
+                if len(parents) > 0:
+                    eqn.append('%s _||_ %s | %s' % (node, ", ".join(others), ', '.join(parents)))
+                else:
+                    eqn.append('%s _||_ %s' % (node, ", ".join(others)))
+
+        return sorted(eqn)
+            
+
+
 if __name__ == "__main__":
     names = ['m331', 'moAh6a6', 'vcFQ']
 
     graph_id = 'temp'#names[2]
 
-    temp = CausalModel()#graph_id)
-    temp.add_causation('X', 'Y', None)
-    temp.add_causation('Y', 'Z', None)
-    print("Inputs:", temp.inputs())
-    print("Outputs:", temp.outputs())
-    temp.plot(output=graph_id + '.png', legend=True)
+    G = CausalModel()#graph_id)
+    G.load_model('dags/Causality.Fig.1.2.dot')
+    equivalent = G.equivalence_class()
+
+    fig, ax_lst = plt.subplots(3, 1, figsize=(6, 2.2))
+    ax_lst = np.array(ax_lst).flatten()
+
+    #G.plot(ax=ax_lst[0])
+
+    for i in range(len(equivalent)):
+        G.plot_path(equivalent[i], ax=ax_lst[i+1])
+    #ax_lst[-1].axis('off')
+    plt.show()
+    fig.tight_layout()

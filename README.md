@@ -38,6 +38,11 @@ In this series of blog posts we will cover most of the content of the book, with
 
 2.4 - [d-separation](https://medium.com/data-for-science/causal-inference-part-vii-d-separation-aa74e361d34e) -- [2.4 - d-separation.ipynb](https://github.com/DataForScience/Causality/blob/master/2.4%20-%20d-separation.ipynb)
 
+2.5 - [Model Testing and Causal Search](https://medium.com/data-for-science/causal-inference-part-vii-model-testing-and-causal-search-536b796f0384) -- [2.5 - Model Testing and Causal Search.ipynb](https://github.com/DataForScience/Causality/blob/master/2.5%20-%20Model%20Testing%20and%20Causal%20Search.ipynb)
+
+## Chapter 3
+
+Coming Soon!
 
 For a more in-depth analysis, checkout Pearl's more technical book:
 
