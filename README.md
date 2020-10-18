@@ -42,7 +42,7 @@ In this series of blog posts we will cover most of the content of the book, with
 
 ## Chapter 3
 
-Coming Soon!
+3.1 - [Interventions](https://medium.com/data-for-science/causal-inference-part-ix-interventions-c3f94190191d) -- [3.1 - Interventions.ipynb](https://github.com/DataForScience/Causality/blob/master/3.1%20-%20Interventions.ipynb)
 
 For a more in-depth analysis, checkout Pearl's more technical book:
 

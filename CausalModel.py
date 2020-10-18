@@ -589,6 +589,26 @@ class CausalModel(object):
         return sorted(eqn)
             
 
+    def intervention_graph(self, nodes, drop_nodes=False):
+        G = self.copy()
+
+        for node in nodes:
+            G.dag.remove_edges_from(list(self.dag.in_edges('X')))
+
+        if drop_nodes:
+            degrees = dict(G.dag.degree())
+
+            remove = []
+
+            for node in degrees:
+                if degrees[node] == 0:
+                    remove.append(node)
+                    del G.pos[node]
+
+            G.dag.remove_nodes_from(remove)
+
+        return G
+
 
 if __name__ == "__main__":
     names = ['m331', 'moAh6a6', 'vcFQ']

@@ -1,0 +1,10 @@
+strict digraph  {
+X [x="-1", y=0];
+Uy [x=1, y=1];
+Y [x=1, y=0];
+Uz [x=0, y=2];
+Z [x=0, y=1];
+Uy -> Y;
+Uz -> Z;
+Z -> Y;
+}
