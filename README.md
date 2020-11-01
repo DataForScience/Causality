@@ -46,10 +46,20 @@ In this series of blog posts we will cover most of the content of the book, with
 
 3.2 - [Adjustment Formula](https://medium.com/data-for-science/causal-inference-part-x-the-adjustment-formula-f9668469d76) -- [3.2 - The Adjustment Formula.ipynb](https://github.com/DataForScience/Causality/blob/master/3.2%20-%20The%20Adjustment%20Formula.ipynb)
 
+---
+
 For a more in-depth analysis, checkout Pearl's more technical book:
 
 <p align="center">
 <a href='https://amzn.to/2OSBP6u' alt='Judea Pearl — Causality'><img src='data/book2.jpeg' height=250></a>
  <br/>
   Amazon Affiliate Link: https://amzn.to/2OSBP6u
+</p>
+
+---
+
+Sign up to the [Sunday Briefing](http://data4sci.com/newsletter) newsletter to be the first to know when we publish new posts:
+
+<p align="center">
+<a href='https://data4sci.ck.page/8a51c452bc' alt='Sunday Briefing Newsletter'><img src='data/newsletter.png' width=500></a>
 </p>
