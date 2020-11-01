@@ -593,7 +593,7 @@ class CausalModel(object):
         G = self.copy()
 
         for node in nodes:
-            G.dag.remove_edges_from(list(self.dag.in_edges('X')))
+            G.dag.remove_edges_from(list(self.dag.in_edges(nodes)))
 
         if drop_nodes:
             degrees = dict(G.dag.degree())
@@ -616,16 +616,8 @@ if __name__ == "__main__":
     graph_id = 'temp'#names[2]
 
     G = CausalModel()#graph_id)
-    G.load_model('dags/Causality.Fig.1.2.dot')
-    equivalent = G.equivalence_class()
+    G.load_model('dags/Primer.Fig.2.9.dot')
 
-    fig, ax_lst = plt.subplots(3, 1, figsize=(6, 2.2))
-    ax_lst = np.array(ax_lst).flatten()
-
-    #G.plot(ax=ax_lst[0])
-
-    for i in range(len(equivalent)):
-        G.plot_path(equivalent[i], ax=ax_lst[i+1])
-    #ax_lst[-1].axis('off')
-    plt.show()
-    fig.tight_layout()
+    Gx = G.intervention_graph('X')
+    Gx2 = Gx.intervention_graph('Z3')
+    print("ok")

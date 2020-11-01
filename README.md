@@ -23,7 +23,7 @@ In this series of blog posts we will cover most of the content of the book, with
 
 
 ## Chapter 1
-1.2 - [Simpson's Paradox](https://medium.com/data-for-science/causal-inference-part-i-415538211aa1) -- [1.2 - Simpson's Paradox.ipynb](https://github.com/DataForScience/Causality/blob/master/1.2%20-%20Simpson's%20Paradox.ipynb)
+1.2 - [Simpson's Paradox](https://medium.com/data-for-science/causal-inference-part-i-415538211aa1) -- [1.2 - Simpson's Paradox.ipynb](https://github.com/DataForScience/Causality/blob/master/1.2%20-%20Simpsons%20Paradox.ipynb)
 
 1.3 - [Probability Theory](https://medium.com/data-for-science/causal-inference-part-ii-probability-theory-8fc804fa8240) -- [1.3 - Probability and Statistics.ipynb](https://github.com/DataForScience/Causality/blob/master/1.3%20-%20Probability%20and%20Statistics.ipynb)
 
@@ -43,6 +43,8 @@ In this series of blog posts we will cover most of the content of the book, with
 ## Chapter 3
 
 3.1 - [Interventions](https://medium.com/data-for-science/causal-inference-part-ix-interventions-c3f94190191d) -- [3.1 - Interventions.ipynb](https://github.com/DataForScience/Causality/blob/master/3.1%20-%20Interventions.ipynb)
+
+3.2 - [Adjustment Formula](https://medium.com/data-for-science/causal-inference-part-ix-interventions-c3f94190191d) -- [3.2 - The Adjustment Formula.ipynb](https://github.com/DataForScience/Causality/blob/master/3.2%20-%20The%20Adjustment%20Formula.ipynb)
 
 For a more in-depth analysis, checkout Pearl's more technical book:
 
