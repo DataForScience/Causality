@@ -44,7 +44,7 @@ In this series of blog posts we will cover most of the content of the book, with
 
 3.1 - [Interventions](https://medium.com/data-for-science/causal-inference-part-ix-interventions-c3f94190191d) -- [3.1 - Interventions.ipynb](https://github.com/DataForScience/Causality/blob/master/3.1%20-%20Interventions.ipynb)
 
-3.2 - [Adjustment Formula](https://medium.com/data-for-science/causal-inference-part-ix-interventions-c3f94190191d) -- [3.2 - The Adjustment Formula.ipynb](https://github.com/DataForScience/Causality/blob/master/3.2%20-%20The%20Adjustment%20Formula.ipynb)
+3.2 - [Adjustment Formula](https://medium.com/data-for-science/causal-inference-part-x-the-adjustment-formula-f9668469d76) -- [3.2 - The Adjustment Formula.ipynb](https://github.com/DataForScience/Causality/blob/master/3.2%20-%20The%20Adjustment%20Formula.ipynb)
 
 For a more in-depth analysis, checkout Pearl's more technical book:
 
