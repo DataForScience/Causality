@@ -1,0 +1,10 @@
+strict digraph  {
+X [x=0, y=0];
+Y [x=1, y=0];
+W [x=1, y=1];
+Z [x=0, y=1];
+X -> Y;
+W -> Y;
+Z -> X;
+Z -> W;
+}
