@@ -46,6 +46,9 @@ In this series of blog posts we will cover most of the content of the book, with
 
 3.2 - [Adjustment Formula](https://medium.com/data-for-science/causal-inference-part-x-the-adjustment-formula-f9668469d76) -- [3.2 - The Adjustment Formula.ipynb](https://github.com/DataForScience/Causality/blob/master/3.2%20-%20The%20Adjustment%20Formula.ipynb)
 
+3.3 - [Backdoor Criterion](https://medium.com/data-for-science/causal-inference-part-xi-backdoor-criterion-e29627a1da0e) -- [3.3 - Backdoor Criterion.ipynb](https://github.com/DataForScience/Causality/blob/master/3.3%20-%20Backdoor%20Criterion.ipynb)
+
+
 ---
 
 For a more in-depth analysis, checkout Pearl's more technical book:
