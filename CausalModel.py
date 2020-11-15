@@ -312,6 +312,37 @@ class CausalModel(object):
         """
         return list(nx.descendants(self.dag, source))
 
+    def backdoor_paths(self, source, target):
+        """Initialize the CausalModel object by reading the information from the dot file with the passed path.
+
+        The file should be a `dot` file and if it contains multiple graphs, only the first such graph is returned. All graphs _except_ the first are silently ignored.
+
+        Parameters
+        ----------
+        path : str or file
+            Filename or file handle.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        >>> G = CausalModel()
+        >>> G.load_model('temp.dot')
+
+        Notes
+        -----
+        The heavy lifting is done by `networkx.drawing.nx_pydot.read_dot`
+
+        """
+
+        allPaths = self.all_paths(source, target)
+        directed = self.directed_paths(source, target)
+
+        return allPaths-directed
+
+
     def directed_paths(self, source, target):
         """Initialize the CausalModel object by reading the information from the dot file with the passed path.
 
