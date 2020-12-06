@@ -427,7 +427,7 @@ class CausalModel(object):
         return {tuple(path) for path in nx.all_simple_paths(dag, source, target)}
 
 
-    def plot_path(self, path, edges=False, ax=None, lw=3):
+    def plot_path(self, path, edges=False, ax=None, conditional=False, lw=3):
         """Initialize the CausalModel object by reading the information from the dot
          file with the passed path.
 
@@ -468,9 +468,15 @@ class CausalModel(object):
         
         nx.draw(self.dag, self.pos, node_color=self.colors[0], ax=ax, edgelist=[])
         nx.draw_networkx_labels(self.dag, self.pos, ax=ax)
-        nx.draw_networkx_edges(self.dag, self.pos,
-                           edgelist=edgelist,
-                           width=lw, edge_color=self.colors[1], ax=ax)
+
+        if conditional:
+            nx.draw_networkx_edges(self.dag, self.pos,
+                               edgelist=edgelist,
+                               width=lw, edge_color=self.colors[1], ax=ax, style='dotted')
+        else:
+            nx.draw_networkx_edges(self.dag, self.pos,
+                               edgelist=edgelist,
+                               width=lw, edge_color=self.colors[1], ax=ax)
         nx.draw_networkx_edges(self.dag, self.pos,
                            edgelist=edges,
                            width=1, ax=ax)
@@ -639,6 +645,29 @@ class CausalModel(object):
             G.dag.remove_nodes_from(remove)
 
         return G
+
+    def conditional_intervention_graph(self, nodes, dependencies, drop_nodes=False):
+        G = self.copy()
+
+        for node in nodes:
+            G.dag.remove_edges_from(list(self.dag.in_edges(nodes)))
+
+        G.dag.add_edges_from(dependencies)
+
+        if drop_nodes:
+            degrees = dict(G.dag.degree())
+
+            remove = []
+
+            for node in degrees:
+                if degrees[node] == 0:
+                    remove.append(node)
+                    del G.pos[node]
+
+            G.dag.remove_nodes_from(remove)
+
+        return G
+
 
 
 if __name__ == "__main__":
