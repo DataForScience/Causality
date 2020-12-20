@@ -477,6 +477,7 @@ class CausalModel(object):
             nx.draw_networkx_edges(self.dag, self.pos,
                                edgelist=edgelist,
                                width=lw, edge_color=self.colors[1], ax=ax)
+
         nx.draw_networkx_edges(self.dag, self.pos,
                            edgelist=edges,
                            width=1, ax=ax)
@@ -533,9 +534,9 @@ class CausalModel(object):
         node_pos = np.array(node_pos)
 
         if ax is None:
-            ax = nx.draw(self.dag, pos, nodelist=nodes, node_color=node_colors)#, node_size=300)
+            ax = nx.draw(self.dag, pos, nodelist=nodes, node_color=node_colors)
         else:
-            nx.draw(self.dag, pos, nodelist=nodes, node_color=node_colors, ax=ax)#, node_size=300) 
+            nx.draw(self.dag, pos, nodelist=nodes, node_color=node_colors, ax=ax)
 
 
         labels = {(node_i, node_j) : label for node_i, node_j, label in self.dag.edges(data='label', default='')}
@@ -557,8 +558,8 @@ class CausalModel(object):
             plt.show()
         else:
             plt.savefig(output, dpi=300)
-
-        plt.close()
+            plt.close()
+        
 
     def v_structures(self):
         structs = set()
