@@ -52,6 +52,8 @@ In this series of blog posts we will cover most of the content of the book, with
 
 3.5 - [Conditional Interventions and Covariate-Specific Effects](https://medium.com/data-for-science/causal-inference-part-xiii-conditional-interventions-and-covariate-specific-effects-1c0126b8b996) -- [3.5 - Conditional Interventions and Covariate-Specific Effects.ipynb](https://github.com/DataForScience/Causality/blob/master/3.5%20-%20Conditional%20Interventions%20and%20Covariate-Specific%20Effects.ipynb)
 
+3.6 - [Inverse Probability Weighing](https://medium.com/data-for-science/causal-inference-part-xiv-inverse-probability-weighing-f81680321427) -- [3.6 - Inverse Probability Weighing.ipynb](https://github.com/DataForScience/Causality/blob/master/3.6%20-%20Inverse%20Probability%20Weighing.ipynb)
+
 ---
 
 For a more in-depth analysis, checkout Pearl's more technical book:
