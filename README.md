@@ -61,6 +61,8 @@ In this series of blog posts we will cover most of the content of the book, with
 
 3.6 - [Inverse Probability Weighing](https://medium.com/data-for-science/causal-inference-part-xiv-inverse-probability-weighing-f81680321427) -- [3.6 - Inverse Probability Weighing.ipynb](https://github.com/DataForScience/Causality/blob/master/3.6%20-%20Inverse%20Probability%20Weighing.ipynb)
 
+3.7 - [Mediation](https://medium.com/data-for-science/causal-inference-part-xv-mediation-26a20212adc9) -- [3.7 - Mediation.ipynb](https://github.com/DataForScience/Causality/blob/master/3.7%20-%20Mediation.ipynb)
+
 ---
 
 For a more in-depth analysis, checkout Pearl's more technical book:
