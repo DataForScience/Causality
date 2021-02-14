@@ -1,4 +1,11 @@
+![GitHub](https://img.shields.io/github/license/DataForScience/Causality)
+[![Twitter @data4sci](https://img.shields.io/twitter/follow/data4sci)](https://twitter.com/intent/follow?screen_name=data4sci)
+![GitHub top language](https://img.shields.io/github/languages/top/DataForScience/Causality)
+![GitHub repo size](https://img.shields.io/github/repo-size/DataForScience/Causality)
+![GitHub last commit](https://img.shields.io/github/last-commit/DataForScience/Causality)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/DataForScience/Causality/master)
+
+[![Sunday Briefing](https://img.shields.io/badge/Sunday_Briefing-Subscribe-blue)](https://data4sci.ck.page/8a51c452bc)
 
 # Causality
 
